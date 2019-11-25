@@ -18,7 +18,7 @@ $name = @$_POST["nome"];
 $email = @$_POST["email"];
 $password = md5(@$_POST["password"]);
 
-$sql = "INSERT INTO usuarios (name, email, password) values ('$name', '$email', '$password')";
+$sql = "INSERT INTO users (name, email, password) values ('$name', '$email', '$password')";
 
 if(isset($_POST) && $_POST){
     $sql = $pdo->query($sql);
