@@ -1,3 +1,5 @@
+<!-- This small calculator was made by Glori4n(https://glori4n.com) as a simple exercise -->
+
 <?php
 
 $dsn = "mysql:dbname=custom;host=127.0.0.1";
