@@ -2,48 +2,31 @@
 
 <?php
 
-$dsn = "mysql:dbname=custom;host=127.0.0.1";
-$dbuser = "root";
-$dbpass = '';
-
-try {
-    $pdo = new PDO($dsn, $dbuser, $dbpass);
-    echo "Connection to the database successfully estabilished!<br><br>";
-
-} catch(PDOException $e) {
-    echo "Failed: ".$e->getMessage();
-}
-
-$name = addslashes(@$_POST["name"]);
-$email = addslashes(@$_POST["email"]);
-$password = addslashes(md5(@$_POST["password"]));
-
-$sql = "INSERT INTO users (name, email, password) values ('$name', '$email', '$password')";
-$sqlt = "SELECT * FROM users";
-$sqlt = $pdo->query($sqlt);
-
-
-
-if(isset($_POST['submit'])){
+    require 'config.php';
+    $sql = "SELECT * FROM users";
     $sql = $pdo->query($sql);
-    echo "<meta http-equiv='refresh' content='0'>";
-}
-
-if($sqlt->rowCount() > 0){
-    foreach($sqlt->fetchAll() as $user){
-        echo "Name: ". $user["name"]. "<br> E-mail - ".$user["email"]."<br><br>";
-    }
-}else{
-    echo "There are no registered users.";
-}
+    
 ?>
 
-<form method="POST">
-    <label>Name:</label>
-    <input type="text" name="name">
-    <label>E-mail:</label>
-    <input type="email" name="email">
-    <label>Password:</label>
-    <input type="text" name="password">
-    <input type="submit" name="submit">
-</form>
+<table width="100%">
+    <tr>
+    <th>Nome</th>
+    <th>E-mail</th>
+    <th>Nome</th>
+    </tr>
+    <?php
+    if($sql->rowCount() > 0){
+    foreach($sql->fetchAll() as $user){
+        echo "<tr>";
+        echo "<td style='text-align:center'>".$user["name"]."</td>";
+        echo "<td style='text-align:center'>".$user["email"]."</td>";
+        echo '<td style="text-align:center"><a href="edit.php?id='.$user["id"].'">Editar</a> - <a href="delete.php?id='.$user["id"].'">Excluir</a>';
+        echo "</tr>";
+    }
+    }else{
+    echo "There are no registered users.";
+    }
+?>
+</table>
+<br>
+<h2 style="text-align:center"><a href="add.php">Add new user</a></h2>
