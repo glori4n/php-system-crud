@@ -14,9 +14,9 @@ try {
     echo "Failed: ".$e->getMessage();
 }
 
-$name = @$_POST["nome"];
-$email = @$_POST["email"];
-$password = md5(@$_POST["password"]);
+$name = addslashes(@$_POST["name"]);
+$email = addslashes(@$_POST["email"]);
+$password = addslashes(md5(@$_POST["password"]));
 
 $sql = "INSERT INTO users (name, email, password) values ('$name', '$email', '$password')";
 
