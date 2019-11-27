@@ -1,3 +1,5 @@
+<!-- This snippet was made by Glori4n(https://glori4n.com) as an exercise -->
+
 <?php
 require 'config.php';
 
