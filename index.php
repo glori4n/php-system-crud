@@ -10,9 +10,9 @@
 
 <table width="100%">
     <tr>
-    <th>Nome</th>
+    <th>Name</th>
     <th>E-mail</th>
-    <th>Nome</th>
+    <th>Actions</th>
     </tr>
     <?php
     if($sql->rowCount() > 0){
