@@ -20,7 +20,7 @@
         echo "<tr>";
         echo "<td style='text-align:center'>".$user["name"]."</td>";
         echo "<td style='text-align:center'>".$user["email"]."</td>";
-        echo '<td style="text-align:center"><a href="edit.php?id='.$user["id"].'">Editar</a> - <a href="delete.php?id='.$user["id"].'">Excluir</a>';
+        echo '<td style="text-align:center"><a href="edit.php?id='.$user["id"].'">Edit</a> - <a href="delete.php?id='.$user["id"].'">Delete</a>';
         echo "</tr>";
     }
     }else{
