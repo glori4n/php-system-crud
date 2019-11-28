@@ -1,19 +1,10 @@
 <!-- This snippet was made by Glori4n(https://glori4n.com) as an exercise -->
 
 <?php
-
     require 'config.php';
 
     if(isset($_GET['id'])){
     $id = addslashes($_GET['id']);
-
-    if(isset($_POST["submit"])){
-        $name = addslashes($_POST["name"]);
-        $email = addslashes($_POST["email"]);
-        $sql = "UPDATE users SET name ='$name', email='$email' WHERE id = '$id'";
-        $pdo->query($sql);
-        header('Location: index.php');
-    }
 
     $sql = "SELECT * FROM users WHERE id = '$id'";
     $sql = $pdo->query($sql);
@@ -21,11 +12,19 @@
     if($sql->rowCount() > 0){
         $data =  $sql->fetch();
 
-        if(isset($_POST["submit"]) && isset($_POST["password"])){
-            $pass = addslashes(md5($_POST["password"]));
-            $sqlpass = "UPDATE users SET password ='$pass' WHERE id ='$id'";
-            $pdo->query($sqlpass);
-        }
+        if(isset($_POST["submit"])){
+            $name = addslashes($_POST["name"]);
+            $email = addslashes($_POST["email"]);
+            if(isset($_POST["password"]) && !empty($_POST["password"])){
+                $pass = addslashes(md5($_POST["password"]));
+                $sql = "UPDATE users SET name ='$name', email='$email', password='$pass' WHERE id = '$id'";
+                $pdo->query($sql);
+            }else{
+                $sql = "UPDATE users SET name ='$name', email='$email' WHERE id = '$id'";
+                $pdo->query($sql);
+            }
+            header('Location: index.php');
+        }        
 
     }else{
         header('Location: index.php');
@@ -34,11 +33,6 @@
     }else{
         header('Location: index.php');
     }
-
-    if(isset($_POST["submit"])){
-        $pdo->query($sql);
-    }
-
 ?>
 
 <h2>Update user: <?= $data["id"]; ?></h2>
