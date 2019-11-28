@@ -12,6 +12,7 @@
         $email = addslashes($_POST["email"]);
         $sql = "UPDATE users SET name ='$name', email='$email' WHERE id = '$id'";
         $pdo->query($sql);
+        header('Location: index.php');
     }
 
     $sql = "SELECT * FROM users WHERE id = '$id'";
@@ -36,7 +37,6 @@
 
     if(isset($_POST["submit"])){
         $pdo->query($sql);
-        header('Location: index.php');
     }
 
 ?>
