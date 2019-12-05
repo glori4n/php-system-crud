@@ -30,3 +30,5 @@
 </table>
 <br>
 <h2 style="text-align:center"><a href="add.php">Add new user</a></h2>
+
+<?php require 'footer.php'; ?>

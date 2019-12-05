@@ -28,3 +28,5 @@ if(isset($_POST["submit"])){
 </form>
 
 <a href="index.php">Back</a>
+
+<?php require 'footer.php'; ?>

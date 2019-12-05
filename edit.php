@@ -47,3 +47,4 @@
 </form>
 
 <a href="index.php">Back</a>
+<?php require 'footer.php'; ?>

@@ -1,4 +1,3 @@
-# user-crud
-A simple user register I made for studies.
+# php-user-crud
 
-It is pretty raw, the aim here is just to have a basic CRUD system made with PHP, mySQL and HTML.
+A raw user crud made on PHP that applies most of the concepts involved in the standard creation of those, the objective of this project is to just have a basic CRUD system made with PHP, mySQL and HTML.
